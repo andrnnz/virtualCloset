@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView, SafeAreaView, Image} from 'react-native';
-import Boton from './components/boton';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LogIn from './components/LogIn';
+import SignIn from './components/SignIn';
 
 export default function App() {
   const [contador, setContador] = useState(0);
   var contador2 = 0;
+
+  const Stack = createNativeStackNavigator();
 
   const aumetarContador = () =>{
     contador2 = contador + 1;
@@ -16,6 +20,7 @@ export default function App() {
 
   },[contador2]);
 
+
   return (
     <>
       <View style={styles.container}>
@@ -25,14 +30,9 @@ export default function App() {
         </View>
       </View>
       <View style={styles.cointenerButtons}>
-        <Boton/>
+        <LogIn/>
         <Text></Text>
-        <Text>
-          No tienes cuenta?{' '}
-          <Text style={styles.signInLink} onPress={()=>{alert("Tocando")}}> 
-            Sign in 
-          </Text>
-        </Text>
+        <SignIn/>
       </View>
     </>
   );
